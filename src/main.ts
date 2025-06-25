@@ -114,6 +114,18 @@ interface MediaData {
 //     - "Film : Inception réalisé par Christopher Nolan (2010)"
 //     - "Album : Thriller par Michael Jackson (1982)"
 
+function displayItemDetails(data:Book|Album|Movie) {
+    if ('author' in data) {
+        console.log(`Livre : ${data.title} écrit par ${data.author} (${data.year})`);        
+    }
+    else if ('director' in data) {
+        console.log(`Film : ${data.title} réalisé par ${data.director} (${data.year})`);
+    }
+    else {
+        console.log(`Album : ${data.title} par ${data.artist} (${data.year})`);
+    }
+}
+
 // ========================================================================
 // Exercice 5 : Boucle sur Tous les Éléments
 // ========================================================================
@@ -121,3 +133,15 @@ interface MediaData {
 //
 // 1. Parcourez tous les tableaux de "data" avec des boucles forEach.
 // 2. Appelez "displayItemDetails" pour chaque élément rencontré
+
+data.albums.forEach(album => {
+    displayItemDetails(album);
+})
+
+data.movies.forEach(movie => {
+    displayItemDetails(movie);
+})
+
+data.books.forEach(book => {
+    displayItemDetails(book);
+})
